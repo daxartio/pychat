@@ -1,0 +1,22 @@
+version: '3.3'
+
+networks:
+  backend_nw:
+    driver: bridge
+
+services:
+  server:
+    image: daxart/pychat_server:latest
+    container_name: server
+    networks:
+    - backend_nw
+    ports:
+    - 127.0.0.1:8080:8080
+
+  web:
+    image: daxart/pychat_web:latest
+    container_name: web
+    networks:
+    - backend_nw
+    ports:
+    - 127.0.0.1:80:3000

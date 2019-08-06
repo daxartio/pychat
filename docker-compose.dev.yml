@@ -1,0 +1,21 @@
+version: '3.3'
+
+services:
+  server:
+    restart: "no"
+    build:
+      context: ./server
+      dockerfile: ./Dockerfile
+    volumes:
+      - ./server:/opt/pychat/server
+  web:
+    restart: "no"
+    build:
+      context: ./web
+      dockerfile: ./dockerfiles/dev/Dockerfile
+    volumes:
+      - ./web:/opt/pychat/web
+      - /opt/pychat/web/node_modules
+    environment:
+    - NODE_ENV=development
+    - REACT_APP_HOST=0.0.0.0

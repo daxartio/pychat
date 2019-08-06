@@ -1,0 +1,107 @@
+@font-face {
+    font-family: Antelive;
+    src: url(Antelive.ttf);
+}
+
+body {
+    font-family: Antelive, serif;
+    text-align: center;
+    background: black;
+    margin: 0;
+    padding: 0;
+}
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: grey;
+    border-radius: 10px;
+}
+
+::selection {
+    background-color: #888;
+    color: #fff;
+}
+
+.App {
+    background: #151515;
+    color: #ffffff;
+    box-shadow: 0 0 20px rgba(225, 255, 230, 0.7);
+    margin: 20px auto auto;
+    text-align: justify;
+    width: 50%;
+    padding: 10px;
+    border: 1px solid #888;
+    border-radius: 5px;
+}
+
+@media screen and (max-width: 980px) {
+    .App {
+        width: 95%;
+        margin: 1%;
+        padding: 1%;
+        border: 0 solid #888;
+    }
+}
+
+.Chat {
+}
+
+.Messages {
+    overflow-y: auto;
+    height: 400px;
+    max-height: 400px;
+    margin-bottom: 10px;
+}
+
+.Message {
+    color: grey;
+    margin-top: 5px;
+    margin-right: 5px;
+    font-size: 14px;
+    word-break: break-word;
+}
+
+.message-name {
+    opacity: .7;
+}
+
+.message-time {
+    font-size: 75%;
+    opacity: .7;
+}
+
+.MessageHeader {
+    font-size: 12px;
+}
+
+.user-name {
+    font-size: 12px;
+    color: grey;
+}
+
+.MessageInput input[type="text"] {
+    font-family: Antelive, serif;
+    width: 100%;
+    background: #151515;
+    color: grey;
+    border: none;
+    border-radius: 5px;
+}
+.MessageInput input[type="text"]:focus {
+    outline: none;
+}
+
+.MessageInput input[type="submit"] {
+    width: 19%;
+    display: none;
+}
