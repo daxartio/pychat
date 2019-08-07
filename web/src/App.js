@@ -51,7 +51,7 @@ export default class App extends React.Component {
                         <Message>
                             <MessageBody>
                                 Helper> Enter command for manage <br />
-                                /name You Name
+                                /name Your Name
                             </MessageBody>
                         </Message>
                         {this.state.messages.map((message, index) => {
