@@ -1,4 +1,4 @@
-version: '3.3'
+version: '3.7'
 
 services:
   server:
@@ -12,7 +12,7 @@ services:
     restart: "no"
     build:
       context: ./web
-      dockerfile: ./dockerfiles/dev/Dockerfile
+      dockerfile: ./dockerfiles/${PC_WEB_BUILD_ENVIRONMENT:-dev}/Dockerfile
     volumes:
       - ./web:/opt/pychat/web
       - /opt/pychat/web/node_modules

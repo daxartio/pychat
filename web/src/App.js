@@ -12,7 +12,7 @@ export default class App extends React.Component {
         };
         this.onMessage = this.onMessage.bind(this);
 
-        this.socket = new WSocket('localhost:8080/ws/main_room', (event) => {
+        this.socket = new WSocket(window.location.host + (window.location.port ? ':' + window.location.port : '') + '/ws/main_room', (event) => {
             try {
                 const message = JSON.parse(event.data);
                 this.state.messages.push(message);
