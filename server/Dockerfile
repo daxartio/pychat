@@ -1,8 +1,10 @@
 FROM python:3-alpine
 
+COPY ./ /tmp/requirements.txt
+RUN pip install -r /tmp/requirements.txt
+
 COPY ./ /opt/pychat/server
+
 WORKDIR /opt/pychat/
 
-RUN pip install -r ./server/requirements.txt
-
-CMD ["python", "-m", "server.app"]
+CMD ["python", "-m", "server"]
