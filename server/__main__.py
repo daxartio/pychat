@@ -22,4 +22,4 @@ def main(host: str, port: int):
 
 
 if __name__ == "__main__":
-    sys.exit(main("localhost", 8080))
+    sys.exit(main(None, 8080))

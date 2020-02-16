@@ -1,7 +1,7 @@
 version: 1
 
 root:
-  handlers: [console, file]
+  handlers: [console]
   level:    DEBUG
 
 disable_existing_loggers: true
@@ -20,17 +20,10 @@ handlers:
     formatter: default
     level:     DEBUG
     stream:    ext://sys.stdout
-  file:
-    class:     logging.FileHandler
-    level:     INFO
-    formatter: default
-    filename:  info.log
-    encoding:  utf8
-    mode:      a
 
 formatters:
   default:
-    format:  "%(asctime)s %(levelname)-8s [%(name)s::%(filename)s:%(lineno)d] %(message)s"
+    format:  "%(asctime)s %(levelname)-8s [%(name)s:%(lineno)d] %(message)s"
   brief:
     format:  "[%(levelname)-8s] %(asctime)s '%(name)s': %(message)s"
     datefmt: "%Y-%m-%d %H:%M:%S"

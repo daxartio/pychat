@@ -1,8 +1,12 @@
+import logging
 import uuid
 import json
 from datetime import datetime
+from collections import defaultdict
 
 from aiohttp import web, WSMsgType
+
+logger = logging.getLogger(__name__)
 
 
 async def _broadcast(request, room_id, message):
@@ -29,8 +33,11 @@ async def web_socket_handler(request):
 
     user_id = uuid.uuid4()
 
+    if 'wslist' not in app:
+        app['wslist'] = defaultdict(dict)
+
     app['wslist'][room_id][user_id] = ws
-    app.logger.info('New connectection {} {}'.format(room_id, user_id))
+    logger.info('New connectection {} {}'.format(room_id, user_id))
 
     async for message in ws:
         if message.type == WSMsgType.TEXT:
@@ -39,6 +46,6 @@ async def web_socket_handler(request):
             break
 
     app['wslist'][room_id].pop(user_id, None)
-    app.logger.info('Close connectection {} {}'.format(room_id, user_id))
+    logger.info('Close connectection {} {}'.format(room_id, user_id))
 
     return ws

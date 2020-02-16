@@ -4,7 +4,7 @@ services:
   server:
     restart: "no"
     build:
-      context: ./server
+      context: .
       dockerfile: ./Dockerfile
     volumes:
       - ./server:/opt/pychat/server
@@ -12,7 +12,7 @@ services:
     restart: "no"
     build:
       context: ./web
-      dockerfile: ./dockerfiles/${PC_WEB_BUILD_ENVIRONMENT:-dev}/Dockerfile
+      dockerfile: ./dockerfiles/${PC_WEB_BUILD_ENVIRONMENT:-prod}/Dockerfile
     volumes:
       - ./web:/opt/pychat/web
       - /opt/pychat/web/node_modules

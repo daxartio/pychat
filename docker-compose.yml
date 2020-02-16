@@ -9,18 +9,15 @@ networks:
 services:
   server:
     image: daxart/pychat_server:latest
-    container_name: server
     networks:
     - backend_nw
 
   web:
     image: daxart/pychat_web:latest
-    container_name: web
     networks:
     - frontend_nw
 
   nginx:
-    container_name: nginx
     networks:
       - frontend_nw
       - backend_nw
