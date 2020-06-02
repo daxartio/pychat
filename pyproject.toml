@@ -1,11 +1,8 @@
 [tool.poetry]
-name = "server"
+name = "pychat"
 version = "0.1.0"
 description = ""
 authors = ["Danil Akhtarov <daxartio@gmail.com>"]
-
-[tool.poetry.scripts]
-server = "server.__main__"
 
 [tool.poetry.dependencies]
 python = "^3.8"

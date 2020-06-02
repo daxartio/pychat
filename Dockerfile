@@ -1,11 +1,16 @@
-FROM python:3.8.1
+FROM python:3.8
 
-COPY ./poetry.lock /opt/pychat/poetry.lock
-COPY ./pyproject.toml /opt/pychat/pyproject.toml
-RUN cd /opt/pychat && pip install poetry==1.0.3 && poetry install
+ENV POETRY_VERSION=1.0.5 \
+    ENVIRONMENT=production
 
-COPY ./server /opt/pychat/server
+WORKDIR /opt/pychat
 
-WORKDIR /opt/pychat/
+COPY ./poetry.lock ./pyproject.toml ./
 
-CMD ["poetry", "run", "python", "-m", "server"]
+RUN pip install poetry==${POETRY_VERSION} \
+    && poetry config virtualenvs.create false \
+    && poetry install  $(test "$ENVIRONMENT" == production && echo "--no-dev")
+
+COPY ./server ./server
+
+CMD ["python", "-m", "server"]
