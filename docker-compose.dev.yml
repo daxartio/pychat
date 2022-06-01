@@ -1,21 +1,22 @@
-version: '3.7'
+version: '3'
 
 services:
   server:
     restart: "no"
     build:
       context: .
-      dockerfile: ./Dockerfile
+      dockerfile: ./docker/server/Dockerfile
     volumes:
       - ./server:/opt/pychat/server
+
   web:
     restart: "no"
     build:
       context: ./web
-      dockerfile: ./dockerfiles/${PC_WEB_BUILD_ENVIRONMENT:-prod}/Dockerfile
+      dockerfile: ./docker/web/Dockerfile
     volumes:
       - ./web:/opt/pychat/web
       - /opt/pychat/web/node_modules
     environment:
-    - NODE_ENV=development
-    - REACT_APP_HOST=0.0.0.0
+      - NODE_ENV=development
+      - REACT_APP_HOST=0.0.0.0

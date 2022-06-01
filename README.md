@@ -2,7 +2,7 @@
 
 ## Get Started
 
-1. Download [docker-compose.yml](docker-compose.yml)
+1. `git clone`
 1. `docker-compose up -d`
 1. Open in browser [localhost](http://localhost)
 
