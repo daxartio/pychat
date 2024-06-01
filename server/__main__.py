@@ -1,16 +1,20 @@
+import logging
 import sys
 
 from aiohttp import web
 
-from . import logger
 from .chat import chat
 
+logger = logging.getLogger(__name__)
 
-async def root_handler(request):
+
+async def root_handler(_request):
     return web.FileResponse("./web/build/index.html")
 
 
 def main(host: str, port: int):
+    logging.basicConfig(level=logging.INFO)
+
     logger.info("Start server")
 
     app = web.Application()

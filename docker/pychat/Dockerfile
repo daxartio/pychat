@@ -12,7 +12,7 @@ COPY ./web/public ./public
 
 RUN npm run build
 
-FROM python:3.10
+FROM python:3.10-slim
 
 ENV POETRY_VERSION=1.1.13
 

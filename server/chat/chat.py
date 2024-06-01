@@ -37,7 +37,7 @@ async def web_socket_handler(request):
         app["wslist"] = defaultdict(dict)
 
     app["wslist"][room_id][user_id] = ws
-    logger.info("New connectection {} {}".format(room_id, user_id))
+    logger.info("New connectection %s %s", room_id, user_id)
 
     async for message in ws:
         if message.type == WSMsgType.TEXT:
@@ -46,6 +46,6 @@ async def web_socket_handler(request):
             break
 
     app["wslist"][room_id].pop(user_id, None)
-    logger.info("Close connectection {} {}".format(room_id, user_id))
+    logger.info("Close connectection %s %s", room_id, user_id)
 
     return ws
